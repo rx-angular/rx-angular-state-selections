@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ProductEntity} from "../product.entity";
-import {delay, map, Observable, of} from "rxjs";
+import {map, Observable, of, delay} from "rxjs";
+import {asyncScheduler} from "@rx-angular/cdk/zone-less/rxjs";
 import {ProductGetDto} from "./product-get.dto";
 import {serverDotToClientEntity} from "./product.mapper";
 // Fake data
@@ -28,7 +29,7 @@ export class ProductResource {
     // `HttpClient#get` would be used in real life here
     return of(dummyServerResult()).pipe(
       map(serverDots => serverDots.map(serverDotToClientEntity)),
-      delay(delayMs)
+      delay(delayMs, asyncScheduler)
     )
   }
 

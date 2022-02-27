@@ -15,6 +15,8 @@ import {Solution2Component} from "./advanced/solution2/solution2.component";
 import {Solution3ScamModule} from "./advanced/solution3/solution3.scam.module";
 import {Solution3Component} from "./advanced/solution3/solution3.component";
 import {NumRendersScamModule} from "./shared/num-renders/num-renders.scam.module";
+import {UnpatchModule} from "@rx-angular/template/unpatch";
+import {WorkScamModule} from "./shared/work/work.scam.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import {NumRendersScamModule} from "./shared/num-renders/num-renders.scam.module
   ],
   imports: [
     BrowserModule,
+    UnpatchModule,
     NumRendersScamModule,
     ProblemVanillaScamModule,
     ProblemScamModule,
@@ -54,7 +57,8 @@ import {NumRendersScamModule} from "./shared/num-renders/num-renders.scam.module
         path: 'solution3',
         component: Solution3Component
       }
-    ])
+    ]),
+    WorkScamModule
   ],
   providers: [],
   bootstrap: [AppComponent]

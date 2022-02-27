@@ -20,7 +20,7 @@ type SortDirections = '👆' | '👇';
     <button (click)="sortAsc()" >👆</button>
     <button (click)="sortDesc()" >👇</button>
     <ul>
-      <li *ngFor="let product of sortedList$ | async; trackBy: trackById">{{product.name + " - " + product.value}}</li>
+      <li *ngFor="let product of (sortedList$ | async); trackBy: trackById">{{product.name + " - " + product.value}}</li>
     </ul>
     <app-work></app-work>
   `

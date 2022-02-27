@@ -1,14 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-num-renders',
   template: `
-    <b>{{render}}<b>
+    {{render}}
   `
 })
 export class NumRendersComponent {
   _render = 0;
-  get render(): number {
-    return ++this._render;
+  get render(): undefined {
+    this.elRef.nativeElement.innerHTML = ++this._render;
+    return undefined;
   }
+
+  constructor(private elRef: ElementRef) {
+
+  }
+
 }

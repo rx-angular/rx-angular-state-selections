@@ -15,8 +15,8 @@
     <a routerLink="solution3">Solution3</a>
   </li>
 </ul>
-<button (click)="globalState.refreshProducts()">
+<button [unpatch] (click)="globalState.refreshProducts()">
   Refresh List
 </button>
-<app-num-renders></app-num-renders>
+<app-work></app-work>
 <router-outlet></router-outlet>

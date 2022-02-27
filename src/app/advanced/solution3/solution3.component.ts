@@ -20,7 +20,7 @@ interface ComponentViewModel {
   selector: 'app-advanced-solution3',
   template: `
     <h1 *rxLet="title$; let title; patchZone: false;">{{title}}</h1>
-    <h2 *rxLet="sortDirection$; let sortDirection; patchZone: false;">Sorted {{sortDirection}}</h2>
+    <h2>Sorted <span *rxLet="sortDirection$; let sortDirection; patchZone: false;">{{sortDirection}}</span></h2>
     <button [unpatch] (click)="sortAsc()" >👆</button>
     <button [unpatch] (click)="sortDesc()" >👇</button>
     <ul>

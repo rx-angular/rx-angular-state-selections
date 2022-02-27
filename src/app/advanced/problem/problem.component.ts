@@ -20,7 +20,7 @@ interface ComponentViewModel {
 @Component({
   selector: 'app-advanced-problem',
   template: `
-    <ng-container *rxLet="vm$; let vm">
+    <ng-container *ngIf="vm$ | async as vm">
       <h1>{{vm.title}}</h1>
       <h2 *rxLet="sortDirection$; let sortDirection">Sorted {{sortDirection}}</h2>
       <button (click)="sortAsc()" >👆</button>
