@@ -4,6 +4,7 @@ import {LetModule} from "@rx-angular/template/let";
 import {CommonModule} from "@angular/common";
 import {WorkScamModule} from "../../shared/work/work.scam.module";
 import {ForModule} from "@rx-angular/template/experimental/for";
+import {UnpatchModule} from "@rx-angular/template/unpatch";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {ForModule} from "@rx-angular/template/experimental/for";
     CommonModule,
     LetModule,
     ForModule,
+    UnpatchModule,
     WorkScamModule
   ],
   exports: [Solution3Component]

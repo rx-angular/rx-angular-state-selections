@@ -19,12 +19,12 @@ interface ComponentViewModel {
 @Component({
   selector: 'app-advanced-solution3',
   template: `
-    <h1 *rxLet="title$; let title">{{title}}</h1>
-    <h2 *rxLet="sortDirection$; let sortDirection">Sorted {{sortDirection}}</h2>
-    <button (click)="sortAsc()" >👆</button>
-    <button (click)="sortDesc()" >👇</button>
+    <h1 *rxLet="title$; let title; patchZone: false;">{{title}}</h1>
+    <h2 *rxLet="sortDirection$; let sortDirection; patchZone: false;">Sorted {{sortDirection}}</h2>
+    <button [unpatch] (click)="sortAsc()" >👆</button>
+    <button [unpatch] (click)="sortDesc()" >👇</button>
     <ul>
-      <li *rxFor="let product of sortedList$; trackBy: 'id'; patchZone: false; parent: false">{{product.name + " - " + product.value}}</li>
+      <li *rxFor="let product of sortedList$; trackBy: 'id'; patchZone: false; parent: false; stragegy: 'immediate'">{{product.name + " - " + product.value}}</li>
     </ul>
     <app-work></app-work>
   `,

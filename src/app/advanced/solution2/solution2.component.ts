@@ -20,7 +20,9 @@ interface ComponentViewModel {
   selector: 'app-advanced-solution2',
   template: `
     <h1>{{title$ | async}}</h1>
-    <button (click)="toggleSort()">Sort {{sortDirection$ | async}}</button>
+    <h2 *rxLet="sortDirection$; let sortDirection">Sorted {{sortDirection}}</h2>
+    <button (click)="sortAsc()" >👆</button>
+    <button (click)="sortDesc()" >👇</button>
     <ul>
       <li *ngFor="let product of sortedList$ | async; trackBy:trackById">{{product.name + " - " + product.value}}</li>
     </ul>
@@ -58,6 +60,12 @@ export class Solution2Component {
 
   toggleSort() {
     this.componentState.set('sortAsc', ({sortAsc}) => !sortAsc);
+  }
+  sortAsc() {
+    this.componentState.set({sortAsc: true});
+  }
+  sortDesc() {
+    this.componentState.set({sortAsc: false});
   }
 
   trackById: TrackByFunction<ProductEntity> = (idx: number, e: ProductEntity) => e.id;

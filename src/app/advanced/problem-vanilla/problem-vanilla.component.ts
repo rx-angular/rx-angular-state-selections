@@ -16,9 +16,9 @@ type SortDirections = '👆' | '👇';
     </h1>
     -->
     <h1>{{(sortedList$ | async)?.length | listTitle}}</h1>
-    <button (click)="toggleSort()">
-      Sort {{sortDirection}}
-    </button>
+    <h2>Sorted {{sortDirection}}</h2>
+    <button (click)="sortAsc()" >👆</button>
+    <button (click)="sortDesc()" >👇</button>
     <ul>
       <li *ngFor="let product of sortedList$ | async; trackBy: trackById">{{product.name + " - " + product.value}}</li>
     </ul>
@@ -28,10 +28,10 @@ type SortDirections = '👆' | '👇';
 export class ProblemVanillaComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
-  sortAsc = true;
+  sort = true;
 
   get sortDirection(): SortDirections {
-    return this.sortAsc ? '👆' : '👇';
+    return this.sort ? '👆' : '👇';
   }
 
   _sortedList$$: BehaviorSubject<ProductEntity[]> = new BehaviorSubject<ProductEntity[]>([]);
@@ -44,15 +44,24 @@ export class ProblemVanillaComponent implements OnInit, OnDestroy {
   }
 
   toggleSort() {
-    this.sortAsc = !this.sortAsc;
-    this._sortedList$$.next(expensiveProductSort(this._sortedList$$.getValue(), this.sortAsc));
+    this.sort = !this.sort;
+    this._sortedList$$.next(expensiveProductSort(this._sortedList$$.getValue(), this.sort));
+  }
+
+  sortAsc() {
+    this.sort = true;
+    this._sortedList$$.next(expensiveProductSort(this._sortedList$$.getValue(), this.sort));
+  }
+  sortDesc() {
+    this.sort = false;
+    this._sortedList$$.next(expensiveProductSort(this._sortedList$$.getValue(), this.sort));
   }
 
   ngOnInit() {
     this.subscription.add(
       this.globalProductState.products$
         .subscribe(
-          list => this._sortedList$$.next(expensiveProductSort(list, this.sortAsc))
+          list => this._sortedList$$.next(expensiveProductSort(list, this.sort))
         )
     );
   }

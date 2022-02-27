@@ -22,9 +22,9 @@ interface ComponentViewModel {
   template: `
     <ng-container *rxLet="vm$; let vm">
       <h1>{{vm.title}}</h1>
-      <button (click)="toggleSort()">
-        Sort {{vm.sortDirection}}
-      </button>
+      <h2 *rxLet="sortDirection$; let sortDirection">Sorted {{sortDirection}}</h2>
+      <button (click)="sortAsc()" >👆</button>
+      <button (click)="sortDesc()" >👇</button>
       <ul>
         <li *ngFor="let product of vm.list; trackBy:trackById">{{product.name + " - " + product.value}}</li>
       </ul>
@@ -65,6 +65,12 @@ export class ProblemComponent {
 
   toggleSort() {
     this.componentState.set('sortAsc', ({sortAsc}) => !sortAsc);
+  }
+  sortAsc() {
+    this.componentState.set({sortAsc: true});
+  }
+  sortDesc() {
+    this.componentState.set({sortAsc: false});
   }
 
   trackById: TrackByFunction<ProductEntity> = (idx: number, e: ProductEntity) => e.id;

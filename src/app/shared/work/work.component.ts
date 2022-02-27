@@ -4,14 +4,14 @@ import {work} from "./work";
 @Component({
   selector: 'app-work',
   template: `
-    <b>{{render}}<b>
+    {{work}}
+    <app-num-renders></app-num-renders>
   `
 })
 export class WorkComponent {
-  _render = 0;
-  get render(): number {
-    console.log('Template evaluation triggered')
+  get work(): undefined {
+    console.log('template evaluation work triggered')
     work();
-    return ++this._render;
+    return undefined;
   }
 }

@@ -14,6 +14,7 @@ import {Solution2ScamModule} from "./advanced/solution2/solution2.scam.module";
 import {Solution2Component} from "./advanced/solution2/solution2.component";
 import {Solution3ScamModule} from "./advanced/solution3/solution3.scam.module";
 import {Solution3Component} from "./advanced/solution3/solution3.component";
+import {NumRendersScamModule} from "./shared/num-renders/num-renders.scam.module";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {Solution3Component} from "./advanced/solution3/solution3.component";
   ],
   imports: [
     BrowserModule,
+    NumRendersScamModule,
     ProblemVanillaScamModule,
     ProblemScamModule,
     Solution1ScamModule,
