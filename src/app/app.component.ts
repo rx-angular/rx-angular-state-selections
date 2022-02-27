@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ProductsState} from "./shared/products/product.state";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'rx-angular-state-selections';
+
+  constructor(public globalState: ProductsState) {
+  }
 }
